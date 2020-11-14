@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-function TodoList(){
+const TodoList = () => {
     const initialState = [
         {
             task: 'Learn Vue.js',
@@ -16,10 +16,19 @@ function TodoList(){
     ]
 
     const [todos, setTodos] = useState(initialState);
+    const [task, setTask] = useState('');
 
+    const handleNewTask = (event) => {
+        setTask( event.target.value);
+    }
+    
     return(
         <div>
             <h1>ToDo List</h1>
+            Add Task : <input
+            value= {task} 
+            onChange={handleNewTask}
+            />
             <ul>
                 { todos.map((todo, index) => (
                     <li key= { index }>{ todo.task }</li>
